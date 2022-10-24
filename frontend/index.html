@@ -1,0 +1,51 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>TODO APP</h1>
+        <p>todo app test project</p>
+        <input type="text",id="Input", placeholder="Элемент списка">
+        <button>Submit</button><button id="clear">Clear</button>
+        <br><p1><span 
+            id="display">0</span></p1>
+        <ul>
+        </ul>
+        <script>
+            function onClickListItem(element) {
+                console.log(element)
+                element.style.color = "red"
+                console.log(213)
+            }
+            let btn = document.querySelector('button')
+            let input = document.querySelector('input')
+            let ul = document.querySelector('ul')
+            let p1 = document.querySelector('p1')
+            let disp = document.getElementById("display")
+            let clear = document.getElementById("clear")
+            let count = 0
+            btn.setAttribute('disabled', true)
+            input.oninput = () => {
+            if (input.value.length < 1) {
+                    btn.setAttribute('disabled', true)
+                }else {btn.removeAttribute('disabled')}
+            }
+            btn.onclick =  () => {
+                ul.innerHTML += "<li onclick='onClickListItem(this)'>" + input.value + "</li>"  
+                count++
+                disp.innerHTML = count
+                } 
+            disp.onclick = () => {
+                count--
+                disp.innerHTML = count
+            }
+            clear.onclick = () => {
+                let clear = document.getElementById("clear");
+        if (input.value !="") {
+            input.value = "";
+            }
+        }
+            
+        </script>
+    </body>
+</html>
