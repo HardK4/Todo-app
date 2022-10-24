@@ -1,11 +1,13 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 app.use(express.json())
+app.use(cors())
 const port = 3000
 
 
 let result = [{'user': 1, 'username': 'test'}, {'user' : 2, 'username': 'test'}]
-let habits = [{"habit": 1,'habitname': 'test'}, {'habit': 2, 'habitname': 'test'}]
+let habits = [{"habit": 1,'habitname': 'todo1'}, {'habit': 2, 'habitname': 'todo2'}]
 
 app.get('/', (req, res) => {
   res.send("Hello Kuba!!")

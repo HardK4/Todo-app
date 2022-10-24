@@ -12,7 +12,20 @@
         <ul>
         </ul>
         <script>
-            function onClickListItem(element) {
+                const baseURL = 'http://localhost:3000/get_habits';
+                fetch(baseURL)
+                    .then(resp => resp.json())
+                    .then(data => displayData(data));
+
+                function displayData(data) {
+                    console.log(JSON.stringify(data, null, 2));
+                    ul.innerHTML += JSON.stringify(data, null, 2)
+                    for (let i = 0; i<data.length; i++){
+                        console.log(data[i]['habitname'])
+                        ul.innerHTML += "<li onclick='onClickListItem(this)'>" + data[i]['habitname'] + "</li>"
+                    }
+                    }   
+                function onClickListItem(element) {
                 console.log(element)
                 element.style.color = "red"
                 console.log(213)
@@ -31,6 +44,10 @@
                 }else {btn.removeAttribute('disabled')}
             }
             btn.onclick =  () => {
+                fetch("http://localhost:3000/create_habits", {method: "POST", body: JSON.stringify({"habitname": input.value, "habit": 4}), headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },})
                 ul.innerHTML += "<li onclick='onClickListItem(this)'>" + input.value + "</li>"  
                 count++
                 disp.innerHTML = count
