@@ -1,68 +1,77 @@
 <html>
-    <head>
 
-    </head>
-    <body>
-        <h1>TODO APP</h1>
-        <p>todo app test project</p>
-        <input type="text",id="Input", placeholder="Элемент списка">
-        <button>Submit</button><button id="clear">Clear</button>
-        <br><p1><span 
-            id="display">0</span></p1>
-        <ul>
-        </ul>
-        <script>
-                const baseURL = 'http://localhost:3000/get_habits';
-                fetch(baseURL)
-                    .then(resp => resp.json())
-                    .then(data => displayData(data));
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todo demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
 
-                function displayData(data) {
-                    console.log(JSON.stringify(data, null, 2));
-                    ul.innerHTML += JSON.stringify(data, null, 2)
-                    for (let i = 0; i<data.length; i++){
-                        console.log(data[i]['habitname'])
-                        ul.innerHTML += "<li onclick='onClickListItem(this)'>" + data[i]['habitname'] + "</li>"
-                    }
-                    }   
-                function onClickListItem(element) {
-                console.log(element)
-                element.style.color = "red"
-                console.log(213)
-            }
-            let btn = document.querySelector('button')
-            let input = document.querySelector('input')
-            let ul = document.querySelector('ul')
-            let p1 = document.querySelector('p1')
-            let disp = document.getElementById("display")
-            let clear = document.getElementById("clear")
-            let count = 0
-            btn.setAttribute('disabled', true)
-            input.oninput = () => {
-            if (input.value.length < 1) {
-                    btn.setAttribute('disabled', true)
-                }else {btn.removeAttribute('disabled')}
-            }
-            btn.onclick =  () => {
-                fetch("http://localhost:3000/create_habits", {method: "POST", body: JSON.stringify({"habitname": input.value, "habit": 4}), headers: {
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },})
-                ul.innerHTML += "<li onclick='onClickListItem(this)'>" + input.value + "</li>"  
-                count++
-                disp.innerHTML = count
-                } 
-            disp.onclick = () => {
-                count--
-                disp.innerHTML = count
-            }
-            clear.onclick = () => {
-                let clear = document.getElementById("clear");
-        if (input.value !="") {
-            input.value = "";
+<body>
+    <h1>TODO APP</h1>
+    <p>todo app test project</p>
+    <input type="text" ,id="Input" , placeholder="Элемент списка">
+    <button>Submit</button><button id="clear">Clear</button>
+    <br>
+    <p1><span id="display">0</span></p1>
+    <ul>
+    </ul>
+    <script>
+        const baseURL = 'http://localhost:3000/get_habits';
+        fetch(baseURL)
+            .then(resp => resp.json())
+            .then(data => displayData(data));
+
+        function displayData(data) {
+            console.log(JSON.stringify(data, null, 2));
+            ul.innerHTML += JSON.stringify(data, null, 2)
+            for (let i = 0; i < data.length; i++) {
+                console.log(data[i]['habitname'])
+                ul.innerHTML += "<li onclick='onClickListItem(this)'>" + data[i]['habitname'] + "</li>"
             }
         }
-            
-        </script>
-    </body>
+        function onClickListItem(element) {
+            console.log(element)
+            element.style.color = "red"
+            console.log(213)
+        }
+        let btn = document.querySelector('button')
+        let input = document.querySelector('input')
+        let ul = document.querySelector('ul')
+        let p1 = document.querySelector('p1')
+        let disp = document.getElementById("display")
+        let clear = document.getElementById("clear")
+        let count = 0
+        btn.setAttribute('disabled', true)
+        input.oninput = () => {
+            if (input.value.length < 1) {
+                btn.setAttribute('disabled', true)
+            } else { btn.removeAttribute('disabled') }
+        }
+        btn.onclick = () => {
+            fetch("http://localhost:3000/create_habits", {
+                method: "POST", body: JSON.stringify({ "habitname": input.value, "habit": 4 }), headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            ul.innerHTML += "<li onclick='onClickListItem(this)'>" + input.value + "</li>"
+            count++
+            disp.innerHTML = count
+        }
+        disp.onclick = () => {
+            count--
+            disp.innerHTML = count
+        }
+        clear.onclick = () => {
+            let clear = document.getElementById("clear");
+            if (input.value != "") {
+                input.value = "";
+            }
+        }
+
+    </script>
+</body>
+
 </html>
