@@ -1,0 +1,53 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <input type="text" class="Number1"> <input type="text" class="Number2"> <button class="plus">+</button> <button class="minus">-</button> 
+        <button class="division">/</button> <button class="multiplication">*</button> <button class="pow">**</button>
+        <div>
+
+        </div>
+        <script>
+            let input1 = document.querySelector(".Number1")
+            let input2 = document.querySelector(".Number2")
+            let btn = document.querySelector(".plus")
+            let btn2 = document.querySelector(".minus")
+            let btn3 = document.querySelector(".division")
+            let btn4 = document.querySelector(".multiplication")
+            let btn5 = document.querySelector(".pow")
+            let div = document.querySelector("div")
+
+            btn.onclick = () => {
+                let input1Value = parseInt(input1.value)
+                let input2Value = parseInt(input2.value)
+                div.innerHTML = "<p class='result'>" + (input1Value + input2Value) + "</p>"
+            }
+
+            btn2.onclick = () => {
+                let input1Value = parseInt(input1.value)
+                let input2Value = parseInt(input2.value)
+                div.innerHTML = "<p class='result'>" + (input1Value - input2Value) + "</p>"  
+
+            }
+
+            btn3.onclick = () => {
+                let input1Value = parseInt(input1.value)
+                let input2Value = parseInt(input2.value)
+                div.innerHTML = "<p class='result'>" + (input1Value / input2Value) + "</p>"  
+
+            }
+
+            btn4.onclick = () => {
+                let input1Value = parseInt(input1.value)
+                let input2Value = parseInt(input2.value)
+                div.innerHTML = "<p class='result'>" + (input1Value * input2Value) + "</p>"
+            }
+
+            btn5.onclick = () => {
+                let input1Value = parseInt(input1.value)
+                let input2Value = parseInt(input2.value)
+                div.innerHTML = "<p class='result'>" + (Math.pow(input1Value, input2Value)) + "</p>"
+            }
+        </script>
+    </body>
+</html>

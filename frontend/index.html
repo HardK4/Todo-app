@@ -12,7 +12,7 @@
     <h1>TODO APP</h1>
     <p>todo app test project</p>
     <input type="text" ,id="Input" , placeholder="Элемент списка">
-    <button>Submit</button><button id="clear">Clear</button>
+    <button class="btn btn-primary input" type="submit">Ввод</button> <button class="btn btn-primary" id="clear">Очистить</button> 
     <br>
     <p1><span id="display">0</span></p1>
     <ul>
@@ -25,7 +25,7 @@
 
         function displayData(data) {
             console.log(JSON.stringify(data, null, 2));
-            ul.innerHTML += JSON.stringify(data, null, 2)
+            
             for (let i = 0; i < data.length; i++) {
                 console.log(data[i]['habitname'])
                 ul.innerHTML += "<li onclick='onClickListItem(this)'>" + data[i]['habitname'] + "</li>"
